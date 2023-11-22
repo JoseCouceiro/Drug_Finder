@@ -1,0 +1,2 @@
+[console_scripts]
+drug_finder = drug_finder.__main__:main

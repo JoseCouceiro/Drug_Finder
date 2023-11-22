@@ -1,0 +1,27 @@
+{
+    "keys" : {
+        "deepl" : "e4e14485-7b4b-be5b-ed0c-229c80f91493:fx"
+    },
+
+    "med_attributes":{
+        "nregistro": {"column": "AEMPS_Register_number", "type": "TEXT", "python_type": "str", "inst": 1},
+        "nombre": {"column": "Name", "type": "TEXT", "python_type": "str", "inst": 1},
+        "labtitular": {"column": "Laboratory", "type": "TEXT", "python_type": "str", "inst": 1},
+        "estado": {"column": "State", "type": "TEXT", "python_type": "dict", "inst": 3},
+        "comerc": {"column": "Commercial", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "receta": {"column": "Prescription", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "generico": {"column": "Generic", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "conduc": {"column": "conduc", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "triangulo": {"column": "triangle", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "huerfano": {"column": "orphan", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "biosimilar": {"column": "Biosimilar", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "nosustituible": {"column": "irreplaceable", "type": "TEXT", "python_type": "dict", "inst": 4},
+        "psum": {"column": "psum", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "notas": {"column": "Notes", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "materialesInf": {"column": "info", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "ema": {"column": "ema", "type": "INTEGER", "python_type": "bool", "inst": 2},
+        "viasAdministracion": {"column": "Administration_id", "type": "TEXT", "python_type": "list", "inst": 5},
+        "formaFarmaceutica": {"column": "Form", "type": "TEXT", "python_type": "dict", "inst": 4},
+        "dosis": {"column": "Dosage", "type": "TEXT", "python_type": "str", "inst": 1}
+    }
+}
