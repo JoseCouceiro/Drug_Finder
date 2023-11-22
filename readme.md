@@ -24,5 +24,5 @@ La aplicación tolera aportar entradas nuevas a una base de datos ya existente. 
 
 INICIO DE LA APLICACION
 
-El entorno virtual de la aplicación ha sido creado con pipenv. Para poner en marcha la aplicación hay que lanzar el entorno virtual en la carpeta "Actividad_Final" con el comando 'pipenv shell' e instalarla: 'pipenv install -e .'. Para iniciar, escribir 'drug_finder'.
+El entorno virtual de la aplicación ha sido creado con pipenv. Para poner en marcha la aplicación hay que lanzar el entorno virtual en la carpeta "Drug_Finder" con el comando 'pipenv shell' e instalarla: 'pipenv install -e .'. Para iniciar, escribir 'drug_finder'.
 
