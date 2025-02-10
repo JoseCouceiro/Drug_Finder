@@ -1,4 +1,4 @@
-pyproject.toml
+README.md
 setup.py
 drug_finder/__init__.py
 drug_finder/__main__.py
@@ -6,6 +6,7 @@ drug_finder/cima.py
 drug_finder/config.py
 drug_finder/handle_data.py
 drug_finder/motor.py
+drug_finder/motor_console.py
 drug_finder/print_data.py
 drug_finder/pubchem.py
 drug_finder/translator.py

@@ -4,9 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-drug-finder = {editable = true, path = "."}
 deepl = "*"
 pubchempy = "*"
+drug-finder = {file = ".", editable = true}
+streamlit = "*"
 
 [dev-packages]
 
