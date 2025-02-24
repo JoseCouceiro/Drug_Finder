@@ -1,4 +1,4 @@
-from motor_streamlit import Motor
+from drug_finder.streamlit_motor import Motor
 
 motor = Motor()
 
