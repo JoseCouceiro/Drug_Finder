@@ -1,32 +1,38 @@
 import streamlit as st
 
-# Sample data: key is a number, value is a dictionary with details
-data = {
-    1: {"name": "Paracetamol", "dose": "500mg", "form": "Tablet", "info": "Used for pain and fever"},
-    2: {"name": "Ibuprofen", "dose": "400mg", "form": "Capsule", "info": "Used for inflammation and pain"},
-    3: {"name": "Aspirin", "dose": "325mg", "form": "Tablet", "info": "Used for blood thinning and pain relief"},
-}
+# Initialize session state variables
+if 'dynamic_buttons' not in st.session_state:
+    st.session_state.dynamic_buttons = {}  # Dictionary to store button states
 
-# Initialize session state for tracking selected button
-if "selected_key" not in st.session_state:
-    st.session_state.selected_key = None
+# Function to create dynamic buttons
+def create_dynamic_button(button_key, label):
+    if button_key not in st.session_state.dynamic_buttons:
+        st.session_state.dynamic_buttons[button_key] = False  # Initialize button state
+    
+    # Create the button
+    if st.button(label, key=button_key):
+        st.session_state.dynamic_buttons[button_key] = True  # Update button state on click
 
-st.title("Medicine Information")
+# Initial button to trigger deployment of dynamic buttons
+if st.button("Deploy Dynamic Buttons"):
+    st.write("Dynamic buttons will now be deployed.")
 
-# Create buttons for each key
-for key in data:
-    if st.button(f"Show details for {data[key]['name']}"):
-        st.session_state.selected_key = key  # Store selected key in session state
+# Deploy dynamic buttons conditionally
+if st.session_state.get('dynamic_buttons_deployed', False):  # Check if deployment flag is set
+    create_dynamic_button("button_1", "Button 1")
+    create_dynamic_button("button_2", "Button 2")
 
-# Display information when a button is clicked
-if st.session_state.selected_key is not None:
-    key = st.session_state.selected_key
-    st.write(f"### {data[key]['name']}")
-    st.write(f"**Dose:** {data[key]['dose']}")
-    st.write(f"**Form:** {data[key]['form']}")
-    st.write(f"**Info:** {data[key]['info']}")
+    # Check if specific buttons were clicked
+    if st.session_state.dynamic_buttons.get("button_1", False):
+        st.write("Button 1 was clicked!")
+        # Perform actions for Button 1
+        # e.g., self.__searcher.search_motor_sing(__activep['nombre'])
 
-    # Button to reset selection
-    if st.button("Go back"):
-        st.session_state.selected_key = None
+    if st.session_state.dynamic_buttons.get("button_2", False):
+        st.write("Button 2 was clicked!")
+        # Perform actions for Button 2
+        # e.g., self.__retrieve_compound_data(1)
 
+# Set deployment flag
+if st.button("Enable Dynamic Buttons"):
+    st.session_state.dynamic_buttons_deployed = True
