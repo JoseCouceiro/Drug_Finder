@@ -1,10 +1,9 @@
 import streamlit as st
 from drug_finder.streamlit_cima import Search
-from drug_finder.handle_data import HandleData
+from drug_finder.streamlit_handle_data import HandleData
 from drug_finder.streamlit_print_data import PrintMedInfo
-from drug_finder.translator import Translate
+from drug_finder.streamlit_translator import Translate
 from drug_finder.streamlit_pubchem import Pubchem
-from drug_finder.db.database_handle import DataBase
 
 class Motor:
 
@@ -14,7 +13,6 @@ class Motor:
         self.__printer = PrintMedInfo()
         self.__translator = Translate()
         self.__pubchem = Pubchem()
-        #self.__db = DataBase()
         if 'med_buttons' not in st.session_state:
             st.session_state.med_buttons = {}
             st.session_state.med_buttons_deployed = True
@@ -57,34 +55,32 @@ class Motor:
             __func = self.__searcher.find_therapeutic_indication
             __posting = True
             self.__display_medicines(__search_term, __posting)
-        download_csv = st.button('Download as csv')
-        if download_csv: 
-            self.__handler.to_csv(self.__searcher.nombre,self.__searcher.response_dict)
+        try:
+            self.__handler.download_as_csv(self.__searcher.nombre,self.__searcher.response_dict)
+        except:
+            pass
 
     def __create_med_button(self, button_key, label):
         if button_key not in st.session_state.med_buttons:
-            st.session_state.med_buttons[button_key] = False  # Initialize button state
-        # Create the button
+            st.session_state.med_buttons[button_key] = False  
         try:
             if st.button(label, key=button_key):
-                st.session_state.med_buttons[button_key] = True  # Update button state on click
+                st.session_state.med_buttons[button_key] = True  
         except:
             pass
 
     def __create_comp_button(self, button_key, label):
         if button_key not in st.session_state.comp_buttons:
-            st.session_state.comp_buttons[button_key] = False  # Initialize button state
-        # Create the button
+            st.session_state.comp_buttons[button_key] = False 
         try:
             if st.button(label, key=button_key):
-                st.session_state.comp_buttons[button_key] = True  # Update button state on click
+                st.session_state.comp_buttons[button_key] = True
         except:
             pass
 
     def __display_medicines(self, query, post):
         self.__check_length(query)
         self.__searcher.search_motor(post)    
-        #self.__handler.save_json(self.__searcher.data_json,self.__searcher.response_dict)
         return self.__print_med_list(self.__searcher.response_dict, query)
 
     def __print_med_list(self, response, query):
@@ -115,7 +111,8 @@ class Motor:
         response_sing = self.__searcher.search_motor_sing()
         self.__print_comp_info(response_sing, nregistro)
              
-    def __print_comp_info(self, response_sing, nregistro):   
+    def __print_comp_info(self, response_sing, nregistro):
+        self.__handler.download_as_pdf(response_sing)
         for __key, __value in self.__printer.interest_data_strings.items():
             if response_sing[__value] == True:
                 response_sing[__value] = 'Sí'

@@ -1,7 +1,4 @@
-from importlib import resources
 import streamlit as st
-import json
-
 import pubchempy as pcp
 
 class Pubchem:
@@ -15,7 +12,6 @@ class Pubchem:
             __verb = 'are'
         st.write(f'\nThere {__verb} {len(__compounds)} compounds matching this name:')
 
-        #cid_list = list()
         for __comp in __compounds:
             st.write(f"  **:red[{__comp}]**")
             self.get_png(__comp.cid)

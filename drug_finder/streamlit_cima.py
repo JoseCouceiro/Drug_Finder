@@ -1,19 +1,6 @@
 import requests
 
 class Search:
-    """
-    Esta es la clase encargada de realizar las búsquedas en la base de datos del CIMA (Centro de Información de Medicamentos de la Agencia Española de Medicamentos y productos Sanitarios -AEMPS-). Se proporciona como dato de inicio de la clase la dirección base de la API REST del CIMA. La clase contiene dos tipos de funciones:
-
-        - Funciones 'find_...()': se encargan de inicializar las variables de búsqueda dependiendo de cuál sean los requerimientos de ésta:
-                > find_medicine: búsqueda de las propiedades de un medicamento en concreto.
-                > find_medicines: búsqueda de todos los medicamentos que contengan una palabra clave en el nombre.
-                > find_principles: búsqueda de medicamentos por principio activo.
-                > find_therapeutic_indication: búsqueda de medicamentos según sus indicaciones terapéuticas.
-
-        - Funciones 'search_motor_...()': hacen el 'request' utilizando los parámetros y almacenan la respuesta en una variable de clase:
-                > search_motor_sing: utiliza los parámetros de la función find_medicine y almacena la respuesta en formato json.
-                > search_motor: utiliza los parámetros del resto de funciones de la clase. Construye un diccionario organizado con las respuestas obtenidas (archivos json con 25 medicamentos cada uno). Aclaración: para cuando me di cuenta de que podría haber iterado sobre las respuesta sin necesidad de construir este diccionario, ya había muchas funciones que dependían de él así que decidí dejarlo así. La función recibe un parámetro 'posting' que determina si debe hacerse un 'request' de tipo 'get' o 'post'.
-    """
 
     def __init__(self):
         self.__base_url = 'https://cima.aemps.es/cima/rest/'

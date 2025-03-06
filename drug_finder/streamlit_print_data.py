@@ -1,8 +1,4 @@
 import streamlit as st
-from streamlit_cima import Search
-from handle_data import HandleData
-from translator import Translate
-from streamlit_pubchem import Pubchem
 
 class PrintMedInfo():
 
