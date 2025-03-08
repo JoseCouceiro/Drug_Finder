@@ -1,5 +1,5 @@
 import deepl
-from drug_finder.config import cfg_item
+import streamlit as st
 
 
 class Translate:
@@ -12,7 +12,7 @@ class Translate:
 
     def __init__(self):
         
-        self.__auth_key = cfg_item("keys","deepl")
+        self.__auth_key = st.secrets["deepl"]
         self.__translator = deepl.Translator(self.__auth_key)
 
     def translate_to_en(self, principle):
